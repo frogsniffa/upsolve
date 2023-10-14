@@ -7,7 +7,7 @@ b = 0
 E = EllipticCurve(GF(p**2, "x", modulus=x**2 + 1), [a, b])
 n = 4999
 
-# solving for the root of the nth divison polynomial is infeasible
+# solving for the root of the nth division polynomial is infeasible
 # http://tcs.uj.edu.pl/~mistar/pdf/Miller2004WeilPairing.pdf
 torsion_group = set()
 while len(torsion_group) < 2:
@@ -22,10 +22,12 @@ while len(torsion_group) < 2:
 print(f"{torsion_group = }")
 P, Q = torsion_group
 
+
 def get_random_point_from_E_n():
     i = randint(1, n)
     j = randint(1, n)
     return i*P + j*Q
+
 
 R = get_random_point_from_E_n()
 two_sum = dict()
