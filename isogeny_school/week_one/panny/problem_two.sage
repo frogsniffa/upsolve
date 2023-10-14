@@ -10,7 +10,7 @@ n = 4999
 # solving for the root of the nth divison polynomial is infeasible
 # http://tcs.uj.edu.pl/~mistar/pdf/Miller2004WeilPairing.pdf
 torsion_group = set()
-while 1:
+while len(torsion_group) < 2:
     P = E.random_point()
     P_order = P.order()
     m = int(P_order / gcd(P_order, n))
@@ -18,8 +18,6 @@ while 1:
     if torsion_element != E(0):
         assert n * torsion_element == E(0)
         torsion_group.add(torsion_element)
-    if len(torsion_group) == 2:
-        break
 
 print(f"{torsion_group = }")
 P, Q = torsion_group
