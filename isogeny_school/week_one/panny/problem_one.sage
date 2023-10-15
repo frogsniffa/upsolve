@@ -5,8 +5,7 @@ intersections = [[i[x], i[y]] for i in intersections]
 assert len(intersections) == 3
 
 E = EllipticCurve(QQ, [-7, 10])
-poi = E(0)
-check = poi
+check = E(0)
 for x in intersections:
     check += E(x)
-assert poi == check
+assert check == E(0)
