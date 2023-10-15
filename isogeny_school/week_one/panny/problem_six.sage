@@ -1,5 +1,3 @@
-from sage.schemes.elliptic_curves.ell_point import EllipticCurvePoint_finite_field
-
 p = 2**32 - 5
 a = 0
 b = 1
