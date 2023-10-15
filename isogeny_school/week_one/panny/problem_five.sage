@@ -26,5 +26,6 @@ print(f"{phi = }")
 # need to change p and n, otherwise dual gets stuck
 dual = phi.dual()
 print(f"{dual = }")
+# the kernel is the point that, put into the dual isogeny, outputs the poi
 kernel = phi(K)
 assert dual(kernel) == dual(kernel).curve()(0)

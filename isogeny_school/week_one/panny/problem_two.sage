@@ -3,12 +3,19 @@ from tqdm import tqdm
 p = 18446744073709551667
 a = 1
 b = 0
-# CSIDH uses F_p^2
+# CSIDH uses F_p^2. copy this from CSIDH code
 E = EllipticCurve(GF(p**2, "x", modulus=x**2 + 1), [a, b])
 n = 4999
 
-# solving for the root of the nth division polynomial is infeasible
-# http://tcs.uj.edu.pl/~mistar/pdf/Miller2004WeilPairing.pdf
+# nth torsion group could be solved algebraically by recursively repeating
+# the multiplication by n map and solving for denominator = 0
+# but that takes too much time.
+# solving for the root of the elliptic curve nth division polynomial is infeasible too,
+# which is just a refined multiplication by n map focusing on the denominator.
+# https://link.springer.com/article/10.1007/s00145-004-0315-8
+# the definition of an n-torsion group is the set of points such that n * point == E(0)
+# so find random points, get their order, and divide that order by n.
+# l-torsion subgroup are modules of rank at most two == torsion group set length <= 2
 torsion_group = set()
 while len(torsion_group) < 2:
     P = E.random_point()

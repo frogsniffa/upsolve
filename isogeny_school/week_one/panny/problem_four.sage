@@ -11,6 +11,8 @@ print(f"{P = }")
 
 isogenies = []
 for i in tqdm(range(127)):
+    # this is like finding the 2-torsion group across different E
+    # outputted by the isogeny every iteration
     kernel = 2**(127 - i - 1) * P
     isogeny = EllipticCurveIsogeny(kernel.curve(), kernel)
     assert isogeny.degree() == 2
